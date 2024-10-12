@@ -18,34 +18,33 @@ const boltApp: Bolt.App = new Bolt.App({
 });
 
 // 커맨드 정의
-boltApp.command("/review", async ({ ack }) => {
-  try {
-    await ack();
-    const pullRequests = await AppService.getPullRequests();
-    const { mergeable, notMergeable } = await AppService.getProcessedPulls(
-      pullRequests
-    );
+async function alarm() {
+  const pullRequests = await AppService.getPullRequests();
+  const { mergeable, notMergeable } = await AppService.getProcessedPulls(
+    pullRequests
+  );
 
-    await boltApp.client.chat.postMessage({
-      channel: process.env.GDS_CHANNEL || "",
-      attachments: [
-        BoltService.createApprovedPulls(mergeable),
-        {
-          mrkdwn_in: ["text", "fields"] as ("text" | "pretext" | "fields")[],
-          pretext: `\n\n`,
-        },
-        ...BoltService.generateAttachments(notMergeable),
-      ],
-    });
-  } catch (error) {
-    console.error("에러 발생:", error);
-  }
-});
+  await boltApp.client.chat.postMessage({
+    channel: process.env.GDS_CHANNEL || "",
+    attachments: [
+      BoltService.createApprovedPulls(mergeable),
+      {
+        mrkdwn_in: ["text", "fields"] as ("text" | "pretext" | "fields")[],
+        pretext: `\n\n`,
+      },
+      ...BoltService.generateAttachments(notMergeable),
+    ],
+  });
+}
 
 async function startServer() {
   await boltApp.start(port);
 
   console.log("⚡️ Bolt app is running!");
+
+  await alarm();
+
+  boltApp.stop();
 }
 
 startServer();

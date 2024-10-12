@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node dist/app.js",
     "build": "tsup src/app.ts --format cjs,esm --dts --minify",
-    "build:watch": "tsup src/app.ts --format cjs,esm --dts --minify --watch"
+    "build:watch": "tsup src/app.ts --format cjs,esm --dts --minify --watch",
+    "alarm": "node dist/app.js"
   },
   "dependencies": {
     "@octokit/rest": "^21.0.2",
