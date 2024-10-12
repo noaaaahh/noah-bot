@@ -20,7 +20,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: "12.18.3"
+          node-version: "18"
         env:
           GITHUB_TOKEN: ${{ secrets.AUTH_TOKEN }}
           SLACK_SECRET: ${{ secrets.SLACK_SECRET }}
