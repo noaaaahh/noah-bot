@@ -11,10 +11,8 @@ const port: string = process.env.PORT || "3000";
 // 모듈 선언
 const boltApp: Bolt.App = new Bolt.App({
   logLevel: Bolt.LogLevel.DEBUG,
-  socketMode: true,
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SECRET,
-  appToken: process.env.SLACK_APP_TOKEN,
 });
 
 // 커맨드 정의
