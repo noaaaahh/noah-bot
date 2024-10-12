@@ -1,0 +1,27 @@
+{
+  "name": "review-bot",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "noah.choi",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node dist/app.js",
+    "build": "tsup src/app.ts --format cjs,esm --dts --minify",
+    "build:watch": "tsup src/app.ts --format cjs,esm --dts --minify --watch"
+  },
+  "dependencies": {
+    "@octokit/rest": "^21.0.2",
+    "@slack/bolt": "^3.22.0",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.2"
+  }
+}
