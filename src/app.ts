@@ -42,7 +42,7 @@ async function startServer() {
 
   await alarm();
 
-  // boltApp.stop();
+  boltApp.stop();
 }
 
 startServer();
