@@ -1,0 +1,28 @@
+name: Alarm
+
+on:
+  schedule:
+    # UTC 오전 3시 마다 돌아감 -> 한국 시간 12시
+    # https://crontab.guru/#0_3_*_*_*
+    - cron: "0 2 * * *"
+
+  # github action에서 수동으로 액션을 돌릴 수 있다.
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.18.3"
+
+      - name: Send message
+        run: |
+          yarn
+          yarn alarm
