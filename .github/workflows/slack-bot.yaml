@@ -21,6 +21,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.18.3"
+        env:
+          GITHUB_TOKEN: ${{ secrets.AUTH_TOKEN }}
+          SLACK_SECRET: ${{ secrets.SLACK_SECRET }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_APP_TOKEN: ${{ secrets.SLACK_APP_TOKEN }}
+          GDS_CHANNEL: ${{ secrets.GDS_CHANNEL }}
+          GITHUB_OWNER: ${{ secrets.OWNER }}
+          GITHUB_REPO: ${{ secrets.REPO }}
 
       - name: Send message
         run: |
