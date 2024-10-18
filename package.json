@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@octokit/rest": "^21.0.2",
-    "@slack/bolt": "^3.22.0",
+    "axios": "^1.7.7",
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.5"
   },

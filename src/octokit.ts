@@ -23,36 +23,3 @@ export async function getPullRequest(
 ) {
   return octokit.pulls.get({ owner, repo, pull_number: pullNumber });
 }
-
-// --
-
-// import { Octokit, RestEndpointMethodTypes } from "@octokit/rest";
-
-// export class OctokitService {
-//   private readonly octokit: Octokit;
-//   private readonly owner: string;
-//   private readonly repo: string;
-
-//   constructor(owner: string, repo: string) {
-//     this.octokit = new Octokit({ auth: process.env.GITHUB_TOKEN || "" });
-//     this.owner = owner;
-//     this.repo = repo;
-//   }
-
-//   async getPullRequests({
-//     state = "open",
-//     owner = this.owner,
-//     repo = this.repo,
-//     ...params
-//   }: RestEndpointMethodTypes["pulls"]["list"]["parameters"]) {
-//     return this.octokit.rest.pulls.list({ owner, repo, state, ...params });
-//   }
-
-//   async getPullRequest(pullNumber: number) {
-//     return this.octokit.pulls.get({
-//       owner: this.owner,
-//       repo: this.repo,
-//       pull_number: pullNumber,
-//     });
-//   }
-// }
