@@ -12,6 +12,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.AUTH_TOKEN }}
+  SLACK_WEB_HOOK_URL: ${{ secrets.SLACK_WEB_HOOK_URL }}
   SLACK_SECRET: ${{ secrets.SLACK_SECRET }}
   SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
   SLACK_APP_TOKEN: ${{ secrets.SLACK_APP_TOKEN }}
