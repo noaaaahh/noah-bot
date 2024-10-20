@@ -24,7 +24,20 @@ export function createAttachment(
 }
 
 export function generateAttachments(pullRequests: TPullRequest[]) {
-  if (!pullRequests || !pullRequests.length) return [];
+  if (!pullRequests || !pullRequests.length)
+    return [
+      {
+        mrkdwn_in: ["text", "pretext"] as ("text" | "pretext" | "fields")[],
+        pretext: "",
+        color: "#1d6ce0",
+        fields: [
+          {
+            title:
+              "오늘은 머지할 PR이 없어요. 잘 대접 받은 한 끼를 먹은 기분입니다. 고생하셨습니다.",
+          },
+        ],
+      },
+    ];
 
   const timeCategorizedPulls = pullRequests.reduce<{
     imminent: Array<TPullRequest>; // 시간이 촉박한 경우
@@ -53,7 +66,7 @@ export function generateAttachments(pullRequests: TPullRequest[]) {
   return [
     timeCategorizedPulls.imminent.length
       ? createAttachment(
-          "이 PR은 Even하게 익지 않았어요. 보류입니다.",
+          "PR이 Even하게 익지 않았어요. Approve가 조금 모자란 것 같아요. 탈락입니다.",
           "#D91C29",
           timeCategorizedPulls.imminent
         )

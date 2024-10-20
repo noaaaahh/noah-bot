@@ -2,13 +2,7 @@ name: Alarm
 
 on:
   schedule:
-    # UTC 오전 2시 마다 돌아감 -> 한국 시간 11시
-    # https://crontab.guru/#0_2_*_*_*
-
-    - cron: "0 0 * * 1-5"
     - cron: "40 0 * * 1-5"
-    - cron: "30 1 * * 1-5"
-    - cron: "0 1 * * 1-5"
 
   # github action에서 수동으로 액션을 돌릴 수 있다.
   workflow_dispatch:

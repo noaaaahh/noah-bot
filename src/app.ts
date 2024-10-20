@@ -14,7 +14,7 @@ async function alarm() {
 
   await axios.create().post(process.env.SLACK_WEB_HOOK_URL || "", {
     attachments: [
-      BoltService.createApprovedPulls(mergeable),
+      mergeable.length && BoltService.createApprovedPulls(mergeable),
 
       ...BoltService.generateAttachments(notMergeable),
     ],
